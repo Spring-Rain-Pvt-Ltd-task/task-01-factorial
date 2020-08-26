@@ -4,11 +4,17 @@ const App=()=> {
 const result = useRef()
 const [num,setNum]= useState(0)
 const handleOnChange= e => setNum(Number(e.target.value))
-const factorial = value => value ? value * factorial(value - 1) : 1;
+const factorial = value => {
+  if(value<0) {
+    return window.alert("Negative value not acceptable")
+  }
+    return value  ? value * factorial(value - 1) : 1;
+}
 
 const handleSubmit = e => {
     e.preventDefault()
-    return result.current.innerText=`Factorial: ${factorial(num)}`;
+    let factorial_result=factorial(num)
+    return result.current.innerText=`Factorial: ${factorial_result ? factorial_result: 0}`;
 }
 
   return (
